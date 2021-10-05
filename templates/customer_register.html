@@ -1,0 +1,4 @@
+<form action="{% url 'customer_register' %}" method="POST" novalidate>
+{% csrf_token %}
+{{form}}
+<input type="submit" />
