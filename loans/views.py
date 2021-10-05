@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -12,6 +12,7 @@ def get_loan(request):
             new_form = form.save(commit=False)
             new_form.user = request.user
             new_form.save()
+            return redirect('register')
     else:
         form = LoanForm()
     
@@ -20,3 +21,12 @@ def get_loan(request):
     }
     return render(request, "get_loan.html", context)
 
+
+def all_loans(request):
+    all_loans=Loan1.objects.all()
+    
+    context = {
+
+        'all_loans': all_loans
+    }
+    return render(request, "all_loans.html", context)
