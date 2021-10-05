@@ -1,0 +1,21 @@
+
+<table>
+
+    <tr>
+        <th>User</th> 
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Date</th>
+    </tr>
+    {% for loan in all_loans  %}
+    <tr>
+        
+        <td>{{ loan.type }}</td>
+        <td{>{{ loan.user }}</td>
+        <td>{{ loan.amount }}</td>
+        <td>{{ loan.date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+   
