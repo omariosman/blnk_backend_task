@@ -35,6 +35,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'loans',
     'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
