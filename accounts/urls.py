@@ -11,10 +11,6 @@ urlpatterns = [
     path('customer_register/', views.customer_register.as_view(), name="customer_register"),
     path('loan_provider_register/', views.loan_provider_register.as_view(), name="loan_provider_register"),
     path('login/', auth_views.LoginView.as_view(), name="login"),
-    path('logout/',views.logout, name="logout")
-
-
-
-
+    path('signout/',views.signout, name="signout")
 
 ]
