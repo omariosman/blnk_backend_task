@@ -1,5 +1,5 @@
 
-<form action="{% url 'get_loan' %}" method="POST">
+<form action="{% url 'loans:get_loan' %}" method="POST">
 {% csrf_token %}
 {{form}}
 <input type="submit" value="Get A Loan" />

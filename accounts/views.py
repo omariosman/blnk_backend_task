@@ -9,12 +9,6 @@ from django.contrib.auth import logout as logouts
 
 
 
-
-def logout(request):
-    if request.method == "POST":
-        logouts(request)
-        return redirect('register')
-
 # Create your views here.
 
 def register(request):
@@ -25,11 +19,18 @@ class customer_register(CreateView):
     form_class = CustomerSignUpForm
     template_name = "customer_register.html"
     def get_success_url(self):
-        return reverse('register')
+        return reverse('/loans/home_page')
 
 class loan_provider_register(CreateView):
     model = User
     form_class = LoanProviderSignUpForm
     template_name = "loan_provider_register.html"
     def get_success_url(self):
-        return reverse('register')
+        return reverse('/loans/home_page')
+
+
+
+def logout(request):
+    if request.method == "POST":
+        logouts(request)
+        return redirect('register')
