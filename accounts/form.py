@@ -4,6 +4,8 @@ from .models import User, Customer, Loan_Provider
 from django.db import transaction
 
 
+
+
 class CustomerSignUpForm(UserCreationForm):
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -53,3 +55,4 @@ class LoanProviderSignUpForm(UserCreationForm):
         loan_provider.balance = self.cleaned_data.get('balance')
         loan_provider.save()
         return loan_provider
+

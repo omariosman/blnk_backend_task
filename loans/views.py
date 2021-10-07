@@ -4,8 +4,12 @@ from django.shortcuts import render, redirect
 
 from .models import Loan1
 from .forms import LoanForm
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def get_loan(request):
+    form = request.POST or None
     if request.method == 'POST':
         form = LoanForm(request.POST)
         if form.is_valid():

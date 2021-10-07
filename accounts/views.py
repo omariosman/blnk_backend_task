@@ -2,7 +2,18 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from .form import CustomerSignUpForm, LoanProviderSignUpForm
 from .models import User, Customer, Loan_Provider
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
+
+from django.contrib.auth import logout as logouts
+
+
+
+
+
+def logout(request):
+    if request.method == "POST":
+        logouts(request)
+        return redirect('register')
 
 # Create your views here.
 
