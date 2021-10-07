@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-import numpy as np
+import numpy_financial as npf
 
 # Create your views here.
 
@@ -36,16 +36,23 @@ def all_loans(request):
 
 def PMT(request):
     instances = Loan_to_Loan_Fund.objects.all()
-    templates= Loan_Template.objects.all()
+    #templates= Loan_Template.objects.all()
     #instances = Loan_to_Loan_Fund.objects.all()
     
     loan_amounts=[]
     interest_rates= []
     payements_number= []
-    for i in len(instances):
-        print (instances[i].loan.amount)
+    pmt_values = []
+    for i in range(len(instances)):
+        #print (instances[i].loan.amount)
         loan_amounts.append(instances[i].loan.amount)
-        interest_rates.append(Loan_Template.objects.get(type=instances[0].loan.type).interest_rate)
-
+        interest_rates.append(Loan_Template.objects.get(type=instances[i].loan.type).interest_rate)
+        #print(interest_rates[0])
+        payements_number.append(Loan_Template.objects.get(type=instances[i].loan.type).payments_number)
+        pmt_values.append(npf.pmt(interest_rates[i],payements_number[i],loan_amounts[i]))
+        instances[i].pmt_out=pmt_values[i]
+        print(pmt_values[i])
+        print(instances[i].pmt_out)
         
-        print(interest_rates[0])
+    context = {}
+    return render(request, "pmt.html", context)
