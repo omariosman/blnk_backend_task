@@ -37,7 +37,7 @@ class LoanProviderSignUpForm(UserCreationForm):
     phone_number = forms.CharField()
     email = forms.EmailField()
     balance = forms.IntegerField()
-    
+
     class Meta(UserCreationForm.Meta):
         model = User
 

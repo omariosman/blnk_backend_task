@@ -18,9 +18,10 @@ def get_loan(request):
     if request.method == 'POST':
         form = LoanForm(request.POST)
         if form.is_valid():
-            new_form = form.save(commit=False)
-            new_form.user = request.user
-            new_form.save()
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            #form.user.add(*[request.user]) 
             return redirect('/')
     else:
         form = LoanForm()
